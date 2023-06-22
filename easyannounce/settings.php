@@ -443,10 +443,7 @@
                 if (isset($_POST['color'])) {
                     $selectedColor = $_POST['color'];
                     $user = $_SESSION['name'];
-                    $servername = 'sportmarludev.mysql.db'; 
-                    $username = 'sportmarludev'; 
-                    $password = 'DevMadein34'; 
-                    $dbname = 'sportmarludev'; 
+                include("config/db_config.php"); 
                     $connection = new PDO("mysql:host=$servername;dbname=$dbname",$username, $password); 
                     $connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $sql = $connection->prepare("UPDATE user SET color = :color WHERE username = :user");
