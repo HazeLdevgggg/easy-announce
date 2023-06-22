@@ -152,10 +152,7 @@
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $message = $_POST['message'];
                         $user=  $_SESSION['name'];
-                        $servername = 'sportmarludev.mysql.db'; 
-                        $username = 'sportmarludev'; 
-                        $password = 'DevMadein34'; 
-                        $dbname = 'sportmarludev'; 
+                        include("config/db_config.php"); 
                         $connection = new PDO("mysql:host=$servername;dbname=$dbname",$username, $password); 
                         $connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $sql = $connection->prepare("INSERT INTO announce (user, message ) VALUES (:user, :message)");
@@ -163,7 +160,7 @@
                         $sql->bindParam(':message', $message);
                         $sql->execute(); 
                       }
-
+                        include("config/db_config.php"); 
                       $conn = new mysqli($servername, $username, $password, $dbname);
                       if ($conn->connect_error) {
                           die("Connection failed: " . $conn->connect_error);
